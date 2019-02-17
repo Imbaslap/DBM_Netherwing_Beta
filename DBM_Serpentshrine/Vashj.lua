@@ -114,9 +114,9 @@ function Vashj:OnEvent(event, arg1)
 
 			self:StartStatusBarTimer(62, "Strider", "Interface\\Icons\\INV_Misc_Fish_13");
 			self:StartStatusBarTimer(54, "Tainted Elemental", "Interface\\Icons\\Spell_Nature_ElementalShields");
-			self:StartStatusBarTimer(47.5, "Naga", "Interface\\Icons\\INV_Misc_MonsterHead_02");
+			self:StartStatusBarTimer(45, "Naga", "Interface\\Icons\\INV_Misc_MonsterHead_02");
 
-			self:ScheduleSelf(47.5, "Spawn", "Naga");
+			self:ScheduleSelf(45, "Spawn", "Naga");
 			self:ScheduleSelf(50, "Spawn", "Tainted Elemental");
 			self:ScheduleSelf(62, "Spawn", "Strider");
 			self:ScheduleSelf(42.5, "SpawnSoonWarn", "Naga");
@@ -169,9 +169,9 @@ function Vashj:OnEvent(event, arg1)
 			if self.Options.WarnSpawns then
 				self:Announce(DBM_VASHJ_WARN_NAGA_NOW, 2);
 			end
-			self:ScheduleSelf(47, "Spawn", "Naga");
+			self:ScheduleSelf(45, "Spawn", "Naga");
 			self:ScheduleSelf(42.5, "SpawnSoonWarn", "Naga");
-			self:StartStatusBarTimer(46, "Naga", "Interface\\Icons\\INV_Misc_MonsterHead_02");
+			self:StartStatusBarTimer(45, "Naga", "Interface\\Icons\\INV_Misc_MonsterHead_02");
 		end
 
 	elseif event == "SPELL_AURA_REMOVED" then

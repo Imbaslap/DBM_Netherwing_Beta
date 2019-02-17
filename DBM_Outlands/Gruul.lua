@@ -103,7 +103,7 @@ end
         local timeleft = self:GetStatusBarTimerTimeLeft("Silence")
         self:EndStatusBarTimer("Silence")
 		self:StartStatusBarTimer(timeleft+11, "Silence", "Interface\\Icons\\Spell_Holy_ImprovedResistanceAuras");
-       self:ScheduleSelf(timeleft+11, "SilenceWarn");
+        self:ScheduleSelf(timeleft+11, "SilenceWarn");
 	   
 	   elseif msg == "Growtimer" then
 		self:StartStatusBarTimer(30, "Grow", "Interface\\Icons\\Spell_Nature_ShamanRage");
