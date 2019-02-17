@@ -69,7 +69,7 @@ function Vashj:OnCombatStart()
 	end
 
 	if self.Options.WarnRoots then
-		self:StartStatusBarTimer(20, "First Entangle", "Interface\\Icons\\Spell_Nature_Stranglevines");
+		self:StartStatusBarTimer(18, "First Entangle", "Interface\\Icons\\Spell_Nature_Stranglevines");
 	end
 end
 
@@ -124,9 +124,7 @@ function Vashj:OnEvent(event, arg1)
 			self:ScheduleSelf(57, "SpawnSoonWarn", "Strider");
 		elseif string.find(arg1, DBM_VASHJ_YELL_PHASE3) then
 			self:SendSync("Phase3");
-		end
-	elseif event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 and (string.find(arg1, DBM_VASHJ_YELL_MULTI_1) or string.find(arg1, DBM_VASHJ_YELL_MULTI_2)) then
+		elseif (string.find(arg1, DBM_VASHJ_YELL_MULTI_1) or string.find(arg1, DBM_VASHJ_YELL_MULTI_2)) then
 			self:SendSync("Multi");
 		end
 
@@ -217,13 +215,13 @@ function Vashj:OnSync(msg)
 		end
 	
 	elseif msg == "Multi" then
-		self:StartStatusBarTimer(12, "Multishot", "Interface\\Icons\\Ability_Upgrademoonglaive");
+		self:StartStatusBarTimer(12, "Next Multishot", "Interface\\Icons\\Ability_Upgrademoonglaive");
 		
 	elseif msg == "ElementDies" then
 		self:StartStatusBarTimer(55, "Tainted Elemental", "Interface\\Icons\\Spell_Nature_ElementalShields");
 		self:ScheduleSelf(55, "Spawn", "Elemental");
 		self:ScheduleMethod(55, "SendSync", "ElementDies");
-		self:ScheduleSelf(45, "SpawnSoonWarn", "Elemental");
+		self:ScheduleSelf(50, "SpawnSoonWarn", "Elemental");
 	
 	elseif msg == "ShieldDown" then
 		shieldsDown = shieldsDown + 1;
@@ -234,6 +232,7 @@ function Vashj:OnSync(msg)
 		end
 	elseif msg == "Phase3" then
 		phase = 3;
+		self:StartStatusBarTimer(240, "Enrage", "Interface\\Icons\\inv_misc_pocketwatch_02");
 		self:UnScheduleSelf("Spawn", "Tainted Elemental");
 		self:UnScheduleSelf("Spawn", "Strider");
 		self:UnScheduleSelf("Spawn", "Naga");
@@ -244,7 +243,7 @@ function Vashj:OnSync(msg)
 		self:EndStatusBarTimer("Strider");
 		self:EndStatusBarTimer("Naga");
 		self:Announce(DBM_VASHJ_WARN_PHASE3, 3);
-		self:StartStatusBarTimer(240 - delay, "Enrage", "Interface\\Icons\\Inv_Misc_Pocketwatch_02");
+		
 		if self.Options.WarnMC then
 			self:StartStatusBarTimer(10, "First Mind Control", "Interface\\Icons\\Spell_Shadow_Charm");
 		end
