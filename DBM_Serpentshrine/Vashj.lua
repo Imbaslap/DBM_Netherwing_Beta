@@ -114,6 +114,7 @@ function Vashj:OnEvent(event, arg1)
 
 			self:StartStatusBarTimer(62, "Strider", "Interface\\Icons\\INV_Misc_Fish_13");
 			self:StartStatusBarTimer(54, "Tainted Elemental", "Interface\\Icons\\Spell_Nature_ElementalShields");
+			self:ScheduleMethod(54, "SendSync", "ElementDies");
 			self:StartStatusBarTimer(45, "Naga", "Interface\\Icons\\INV_Misc_MonsterHead_02");
 
 			self:ScheduleSelf(45, "Spawn", "Naga");
