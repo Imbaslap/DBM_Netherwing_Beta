@@ -18,6 +18,7 @@ Mag:AddOption("WarnNova", true, DBM_MAG_OPTION_3);
 Mag:AddBarOption("Phase 2")
 Mag:AddBarOption("Heal")
 Mag:AddBarOption("Blast Nova")
+Mag:AddBarOption("Quake")
 
 function Mag:OnCombatStart(delay)
     self:SendSync("Combat")
@@ -76,32 +77,36 @@ function Mag:OnSync(msg)
 		self:ScheduleMethod(30, "SendSync", "Quake2");
 			
 	elseif msg == "Quake2" then
-		self:StartStatusBarTimer(60, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
-		self:ScheduleMethod(60, "SendSync", "Quake3");
+		self:StartStatusBarTimer(59, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
+		self:ScheduleMethod(59, "SendSync", "Quake3");
 		
 			elseif msg == "Quake3" then
-		self:StartStatusBarTimer(60, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
-		self:ScheduleMethod(60, "SendSync", "Quake4");
+		self:StartStatusBarTimer(59, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
+		self:ScheduleMethod(59, "SendSync", "Quake4");
 		
 			elseif msg == "Quake4" then
-		self:StartStatusBarTimer(60, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
-		self:ScheduleMethod(60, "SendSync", "Quake5");
+		self:StartStatusBarTimer(59, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
+		self:ScheduleMethod(59, "SendSync", "Quake5");
 		
 			elseif msg == "Quake5" then
-		self:StartStatusBarTimer(60, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
-		self:ScheduleMethod(60, "SendSync", "Quake6");
+		self:StartStatusBarTimer(59, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
+		self:ScheduleMethod(59, "SendSync", "Quake6");
 		
 			elseif msg == "Quake6" then
-		self:StartStatusBarTimer(60, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
-		self:ScheduleMethod(60, "SendSync", "Quake7");
+		self:StartStatusBarTimer(59, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
+		self:ScheduleMethod(59, "SendSync", "Quake7");
 		
 			elseif msg == "Quake7" then
-		self:StartStatusBarTimer(71, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
-		self:ScheduleMethod(71, "SendSync", "Quake8");
+		self:StartStatusBarTimer(59, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
+		self:ScheduleMethod(59, "SendSync", "Quake8");
 		
 			elseif msg == "Quake8" then
-		self:StartStatusBarTimer(60, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
-		self:ScheduleMethod(60, "SendSync", "Quake8");
+		self:StartStatusBarTimer(59, "Quake", "Interface\\Icons\\Spell_Nature_Earthquake");
+		self:ScheduleMethod(59, "SendSync", "Quake8");
 		
     end
+end
+
+function Mag:OnCombatEnd()
+	self:EndStatusBarTimer("Quake");
 end
